@@ -9,6 +9,7 @@ from discord.ext import commands
 my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!", case_insensitive = True)
 #removing default help command to write our own
+client.remove_command('help')
 summoner = ":)" #global summoner object
 regionArray = ["NA", "EUW", "EUNE", "OCE", "KR", "JP", "BR", "LAS", "LAN", "RU", "TR"]
 #debug event to see if bot has logged on to discord
@@ -79,6 +80,6 @@ async def help(ctx):
     )
     print("Setting thumbnail")
     embed.set_thumbnail(url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/256px-LoL_icon.svg.png')
-
+    await ctx.send(embed=embed)
 #runs client
 client.run(my_secret)
