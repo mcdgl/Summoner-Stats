@@ -35,6 +35,7 @@ async def opgg(ctx, region=None, sumName = None):
     else:
         await ctx.send(f'Region: {region.upper()}')
         await ctx.send(f'Summoner Name: {sumName}')
-
+        search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
+        await ctx.send(f'Link: {search}')
 #runs client
 client.run(my_secret)
