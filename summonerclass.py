@@ -24,11 +24,13 @@ class Summoner:
         #searches to see if the page has the element saying that a user does not exist
         exists = soup.find('h2').text
         if("This summoner is not" in exists):
+            print('Summoner does not exist exception')
             raise Exception("HELP I AM TRAPPED IN A PYTHON SCRIPT")
         self.name = soup.find("span", class_="summoner-name").text
 
         #sees if the user is unranked in either rank or flexed
         unranked = soup.findAll("span", class_="unranked")
+        print('Searched unranked')
         if unranked:
             for i in unranked:
                 if ("Solo" in i.parent.text):
@@ -37,10 +39,12 @@ class Summoner:
                 if ("Flex" in i.parent.text):
                     self.flexRank = "Unranked"
                     self.flexLP = 0
-
+        print('Finished unranked checks')
         #checks if the user is ranked in either ranked or flex
         ranked = soup.findAll("div", class_="tier")
+        print('Searched ranked')
         lp = soup.findAll('div', class_='lp')
+        print('Searched LP')
         if ranked:
             for i in range(len(ranked)):
                 if ("Solo" in ranked[i].parent.parent.parent.text):
@@ -49,3 +53,4 @@ class Summoner:
                 if ("Flex" in ranked[i].parent.parent.parent.text):
                     self.flexRank = ranked[i].text.capitalize()
                     self.flexLP = lp[i].text
+        print('Finished ranked checks')
