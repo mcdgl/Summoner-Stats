@@ -33,7 +33,7 @@ async def hi(ctx):
     await ctx.send('Hello!')
 
 @client.command()
-async def opgg(ctx, region=None, *sumName = None):
+async def opgg(ctx, region=None, *sumName):
     global summoner
     if(region ==None or sumName == None):
         await ctx.send(f'Invalid input; Enter as follows: "!op.gg [region] [summoner name]" and try again')
