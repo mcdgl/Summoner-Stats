@@ -39,9 +39,11 @@ class Summoner:
                 if ("Solo" in i.parent.text):
                     self.soloRank = "Unranked"
                     self.soloLP = '0 LP'
+                    self.soloWR = '0% WR'
                 if ("Flex" in i.parent.text):
                     self.flexRank = "Unranked"
                     self.flexLP = '0 LP'
+                    self.flexWR = '0% WR'
         print('Finished unranked checks')
         #checks if the user is ranked in either ranked or flex
         ranked = soup.findAll("div", class_="tier")
