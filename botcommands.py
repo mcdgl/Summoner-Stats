@@ -2,9 +2,9 @@ import discord
 import os
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix = "!")
+client = commands.Bot(command_prefix = "!")
 
-@bot.command()
+@client.command()
 async def hi(ctx):
     print('lebron james!')
     await ctx.send('Hello!')
