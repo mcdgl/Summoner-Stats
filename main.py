@@ -76,7 +76,7 @@ async def help(ctx):
     print("embed moment")
     embed = discord.Embed(
         title = 'Command Information',
-        description = (f'__Here are the following commands so far__:\n**!opgg**: shows user information given a region and account name.\n*Usage*:\n"!opgg [region] [username]"\n__**Example**__: !opgg NA wickJKR\n\n**!help**: Shows usage and info about the Summoner Stats bot.'),
+        description = (f'__Here are the following commands so far__:\n**!opgg**: shows user information given a region and account name.\n__**Usage**__:\n"!opgg [region] [username]"\n__**Example**__:\n!opgg NA wickJKR\n\n**!help**: Shows usage and info about the Summoner Stats bot.'),
         color = discord.Color.blue()
     )
     print("Setting thumbnail")
