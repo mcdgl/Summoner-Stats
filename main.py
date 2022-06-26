@@ -43,9 +43,9 @@ async def opgg(ctx, region=None, *sumName):
         try:
             await ctx.send(f'Region: {region.upper()}')
             username = " ".join(sumName)
-            await ctx.send(f'Summoner Name: {username}')
             #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
             summoner = summonerclass.Summoner(username, region)
+            await ctx.send(f'Summoner Name: {summoner.name}')
             await ctx.send(f'Link: {summoner.opgg}')
         except(Exception):
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
