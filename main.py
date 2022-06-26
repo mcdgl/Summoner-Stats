@@ -74,7 +74,7 @@ async def opgg(ctx, region=None, *sumName):
 @client.command()
 async def help(ctx):
     embed = discord.Embed(
-        title = 'Command Information'
+        title = 'Command Information',
         description = (f'Here are the following commands so far:\n**!opgg** - shows user information given a region and account name.\n***Usage***:\n"!opgg [region] [username]"\nExample: !opgg NA wickJKR\n\n**!help**: Shows usage and info about the Summoner Stats bot.')
     )
     embed.set_thumbnail(url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/256px-LoL_icon.svg.png')
