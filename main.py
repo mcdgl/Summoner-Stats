@@ -5,7 +5,7 @@ from discord.ext import commands
 
 #discord api key stored in env variables for security (this is a public repo)
 my_secret = os.environ['TOKEN']
-client = discord.Client()
+client = commands.Bot(command_prefix = "!")
 
 #debug event to see if bot has logged on to discord
 @client.event
