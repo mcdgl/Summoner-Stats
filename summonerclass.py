@@ -6,7 +6,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
 
-page = requests.get()
+#page = requests.get()
 
 class Summoner:
     def __init__(self, name = "", region = ""):
