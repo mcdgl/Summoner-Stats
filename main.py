@@ -48,8 +48,11 @@ async def opgg(ctx, region=None, *sumName):
             #discord embed settings
             embed = discord.Embed(
                 title = 'Summoner Information',
-                description = f'Summoner Name: {summoner.name}'
+                description = f'Summoner Name: {summoner.name}\nRegion: {summoner.region}\'
             )
+            embed.set_footer(text="Information pulled from the op.gg service")
+            embed.add_field(name='Solo Rank', value = (f'{summoner.soloRank}, {summoner.soloLP}'))
+            embed.add_field(name='Flex Rank', value = (f'{summoner.flexRank}, {summoner.flexLP}'))
             await ctx.send(embed=embed)
             #await ctx.send(f'Summoner Name: {summoner.name}')
             #await ctx.send(f'Region: {region.upper()}')
