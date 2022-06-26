@@ -59,6 +59,9 @@ class Summoner:
         print('Finished ranked checks')
 
         #find profile picture and return
+        print('Finding pfp')
         for i in soup.findAll('img', alt = True):
             if "profile image" in i['alt']:
-                self.pfpLink = i.get('src').text
+                self.pfpLink = i.get('src')
+        print(self.pfpLink)
+        print('Pfp found')
