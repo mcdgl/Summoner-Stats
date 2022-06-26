@@ -48,14 +48,17 @@ class Summoner:
         print('Searched ranked')
         lp = soup.findAll('div', class_='lp')
         print('Searched LP')
+        wr = soup.findAll('div', class_='ratio')
         if ranked:
             for i in range(len(ranked)):
                 if ("Solo" in ranked[i].parent.parent.parent.text):
                     self.soloRank = ranked[i].text.capitalize()
                     self.soloLP = lp[i].text
+                    self.soloWR = wr[i].text
                 if ("Flex" in ranked[i].parent.parent.parent.text):
                     self.flexRank = ranked[i].text.capitalize()
                     self.flexLP = lp[i].text
+                    self.flexWR = wr[i].text
         print('Finished ranked checks')
 
         #find profile picture and return
