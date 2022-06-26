@@ -30,8 +30,8 @@ class Summoner:
             raise Exception("HELP I AM TRAPPED IN A PYTHON SCRIPT")
         #we are given a username from the user, but they may have misspelled/capitalized wrong so this ensures spelling etc is same as registered by riot
         self.name = soup.find("span", class_="summoner-name").text
-
-        #sees if the user is unranked in either rank or flexed
+        self.level = soup.find("span", class_="level").text
+        #sees if the user is unranked in either solo or flexed
         unranked = soup.findAll("span", class_="unranked")
         print('Searched unranked')
         if unranked:
