@@ -68,8 +68,8 @@ async def opgg(ctx, region=None, *sumName):
             await ctx.send(e)
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
 
-@client.command()
+"""@client.command()
 async def help(ctx):
     await ctx.send('Here are the following commands so far:\n**!opgg** - shows user information given a region and account name.\n***Usage***:\n"!opgg [region] [username]"\nExample: !opgg NA wickJKR\n\n**!help**: Shows usage and info about the Summoner Stats bot.')
-#runs client
+#runs client"""
 client.run(my_secret)
