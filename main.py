@@ -47,7 +47,7 @@ async def opgg(ctx, region=None, *sumName):
             channel = ctx.message.channel
             #discord embed settings
             embed = discord.embed(
-                title = 'Summoner Information'
+                title = 'Summoner Information',
                 description = f'Summoner Name: {summoner.name}'
             )
             await ctx.send(embed=embed)
