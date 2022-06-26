@@ -47,8 +47,8 @@ async def opgg(ctx, region=None, *sumName):
             await ctx.send(f'Summoner Name: {summoner.name}')
             await ctx.send(f'Region: {region.upper()}')
             await ctx.send(f'Link: {summoner.opgg}')
-            await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP})
-            await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP})
+            await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP}')
+            await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP}')
         except(Exception):
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
 #runs client
