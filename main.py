@@ -4,6 +4,9 @@ import summonerclass
 #import botcommands
 from discord.ext import commands
 
+#removing default help command to write our own
+bot.remove_command('help')
+
 #discord api key stored in env variables for security (this is a public repo)
 my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!", case_insensitive = True)
@@ -68,8 +71,8 @@ async def opgg(ctx, region=None, *sumName):
             await ctx.send(e)
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
 
-"""@client.command()
+@client.command()
 async def help(ctx):
     await ctx.send('Here are the following commands so far:\n**!opgg** - shows user information given a region and account name.\n***Usage***:\n"!opgg [region] [username]"\nExample: !opgg NA wickJKR\n\n**!help**: Shows usage and info about the Summoner Stats bot.')
-#runs client"""
+#runs client
 client.run(my_secret)
