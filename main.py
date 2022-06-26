@@ -44,11 +44,18 @@ async def opgg(ctx, region=None, *sumName):
             username = " ".join(sumName)
             #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
             summoner = summonerclass.Summoner(username, region)
-            await ctx.send(f'Summoner Name: {summoner.name}')
-            await ctx.send(f'Region: {region.upper()}')
-            await ctx.send(f'Link: {summoner.opgg}')
-            await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP}')
-            await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP}')
+            channel = ctx.message.channel
+            #discord embed settings
+            embed = discord.embed(
+                title = 'Summoner Information'
+                description = f'Summoner Name: {summoner.name}'
+            )
+            await ctx.send(embed=embed)
+            #await ctx.send(f'Summoner Name: {summoner.name}')
+            #await ctx.send(f'Region: {region.upper()}')
+            #await ctx.send(f'Link: {summoner.opgg}')
+            #await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP}')
+            #await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP}')
         except Exception as e:
             print(e)
             await ctx.send(e)
