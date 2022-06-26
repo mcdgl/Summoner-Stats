@@ -1,14 +1,12 @@
 #imports
 import os
 import webbrowser
-#import requests
-#from requests_html import HTMLSession
-import aiohttp
-import asyncio
+import requests
+from requests_html import HTMLSession
 from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
-
+session = HTMLSession()
 
 
 class Summoner:
@@ -19,7 +17,7 @@ class Summoner:
 
         #session = HTMLSession()
         print('prior to session')
-        r = asession.get(self.opgg)
+        r = session.get(self.opgg)
         print('html render')
         r.html.arender()
 
