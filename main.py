@@ -20,7 +20,11 @@ async def on_message(message):
     if message.author == client.user:
         return
     #processing commands
-    await client.process_commands(message)
+    try:
+        await client.process_commands(message)
+    except(Exception):
+        await ctx.send("Command not found.")
+
 
 #test command
 @client.command()
