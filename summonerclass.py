@@ -1,8 +1,10 @@
 #imports
 import os
 import webbrowser
-import requests
-from requests_html import HTMLSession
+#import requests
+#from requests_html import HTMLSession
+import aiohttp
+import asyncio
 from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
@@ -17,9 +19,9 @@ class Summoner:
 
         #session = HTMLSession()
         print('prior to session')
-        r = session.get(self.opgg)
+        r = asession.get(self.opgg)
         print('html render')
-        r.html.render()
+        await r.html.arender()
 
         print('soup')
         soup = BeautifulSoup(r.html.raw_html, "html.parser")
