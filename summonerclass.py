@@ -57,3 +57,8 @@ class Summoner:
                     self.flexRank = ranked[i].text.capitalize()
                     self.flexLP = lp[i].text
         print('Finished ranked checks')
+
+        #find profile picture and return
+        for i in soup.findAll('img', alt = True):
+            if "profile image" in i['alt']:
+                self.pfpLink = i.get('src').text
