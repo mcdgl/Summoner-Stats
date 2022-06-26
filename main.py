@@ -51,7 +51,7 @@ async def opgg(ctx, region=None, *sumName):
                 description = (f"Summoner Name: {summoner.name}\nRegion: {summoner.region.upper()}"),
                 color = discord.Color.orange()
             )
-            embed.set_footer(text="Information pulled from the op.gg service. See more here!", url = summoner.opgg)
+            embed.set_footer(text="Information pulled from the op.gg service.")
             embed.set_image(url = summoner.pfpLink)
             embed.add_field(name='Solo Rank', value = (f'{summoner.soloRank}, {summoner.soloLP}'))
             embed.add_field(name='Flex Rank', value = (f'{summoner.flexRank}, {summoner.flexLP}'))
