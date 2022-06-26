@@ -7,7 +7,7 @@ from discord.ext import commands
 #discord api key stored in env variables for security (this is a public repo)
 my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!")
-summoner = Summoner() #global summoner object
+summoner = summonerclass.Summoner() #global summoner object
 
 #debug event to see if bot has logged on to discord
 @client.event
@@ -40,7 +40,7 @@ async def opgg(ctx, region=None, sumName = None):
             await ctx.send(f'Region: {region.upper()}')
             await ctx.send(f'Summoner Name: {sumName}')
             #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
-            summoner = Summoner(sumName, region)
+            summoner = summonerclass.Summoner(sumName, region)
             await ctx.send(f'Link: {summoner.opgg}')
         except(Exception):
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
