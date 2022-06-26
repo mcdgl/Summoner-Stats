@@ -28,7 +28,7 @@ async def hi(ctx):
 
 @client.command()
 async def opgg(ctx, region=None, sumName = None):
-    if(region ==None or sumName == Nome):
+    if(region ==None or sumName == None):
         await ctx.send(f'Invalid input; Enter as follows: "!op.gg [region] [summoner name]" and try again')
     elif(len(region)>3):
         await ctx.send(f'Invalid input; Make sure you are typing the region abbrevation (as follows: NA = North America, KR = Korea, etc)')
