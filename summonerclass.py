@@ -8,7 +8,7 @@ import asyncio
 from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
-session = HTMLSession()
+
 
 
 class Summoner:
