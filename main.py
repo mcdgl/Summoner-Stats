@@ -56,8 +56,8 @@ async def opgg(ctx, region=None, *sumName):
             )
             embed.set_footer(text="Information pulled from the op.gg service.")
             embed.set_image(url = summoner.pfpLink)
-            embed.add_field(name='Solo Rank', value = (f'{summoner.soloRank}, {summoner.soloLP}'))
-            embed.add_field(name='Flex Rank', value = (f'{summoner.flexRank}, {summoner.flexLP}'))
+            embed.add_field(name='Solo Rank', value = (f'{summoner.soloRank}, {summoner.soloLP}\n{summoner.soloWR}'))
+            embed.add_field(name='Flex Rank', value = (f'{summoner.flexRank}, {summoner.flexLP}\n{summoner.flexWR}'))
             embed.set_thumbnail(url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/256px-LoL_icon.svg.png')
 
             await ctx.send(embed=embed)
