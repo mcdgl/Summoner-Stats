@@ -48,7 +48,7 @@ async def opgg(ctx, region=None, *sumName):
             #discord embed settings
             embed = discord.Embed(
                 title = 'Summoner Information',
-                description = (f"Summoner Name: {summoner.name}\nRegion: {summoner.region.upper()}"),
+                description = (f"**Summoner Name**: {summoner.name}\n**Region**: {summoner.region.upper()}"),
                 color = discord.Color.orange()
             )
             embed.set_footer(text="Information pulled from the op.gg service.")
