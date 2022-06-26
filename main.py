@@ -1,6 +1,6 @@
 import discord
 import os
-import botcommands
+#import botcommands
 from discord.ext import commands
 
 #discord api key stored in env variables for security (this is a public repo)
@@ -20,5 +20,11 @@ async def on_message(message):
     #processing commands
     await client.process_commands(message)
 
+@client.command()
+async def hi(ctx):
+    print('lebron james!')
+    await ctx.send('Hello!')
+
+    
 #runs client
 client.run(my_secret)
