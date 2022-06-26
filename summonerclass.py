@@ -52,7 +52,7 @@ class Summoner:
             for i in range(len(ranked)):
                 if ("Solo" in ranked[i].parent.parent.parent.text):
                     self.soloRank = ranked[i].text.capitalize()
-                    self.soloLP = lp[i].text()
+                    self.soloLP = lp[i].text
                 if ("Flex" in ranked[i].parent.parent.parent.text):
                     self.flexRank = ranked[i].text.capitalize()
                     self.flexLP = lp[i].text
