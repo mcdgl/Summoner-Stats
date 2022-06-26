@@ -14,3 +14,4 @@ async def on_ready():
 async def hi(ctx):
     await ctx.send(f'Hello!')
 client.run(my_secret)
+cmd_client.run(my_secret)
