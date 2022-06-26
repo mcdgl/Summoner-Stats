@@ -6,7 +6,7 @@ from requests_html import HTMLSession
 from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
-
+session = HTMLSession()
 
 
 class Summoner:
@@ -15,7 +15,7 @@ class Summoner:
         self.opgg = "https://" + region.lower() + ".op.gg/summoners/" + region.lower() + "/" + name.replace(" ", "%2B")
         #page = requests.get(self.opgg, headers={'User-Agent': 'Mozilla/5.0'}).text
 
-        session = HTMLSession()
+        #session = HTMLSession()
         r = session.get(self.opgg)
         r.html.render()
 
