@@ -10,7 +10,7 @@ client = commands.Bot(command_prefix = "!")
 #debug event to see if bot has logged on to discord
 @client.event
 async def on_ready():
-    print("We have logged in as  {0.user}".format(client))
+    print("We have logged in as {0.user}".format(client))
 
 #event handler for messages sent in discord server
 @client.event
