@@ -21,8 +21,8 @@ async def on_message(message):
         return
     #processing commands
     try:
-        await client.process_commands(message)
-    except(Exception):
+        await client.process_commands(message.lower())
+    except:
         await ctx.send("Command not found.")
 
 
@@ -33,7 +33,7 @@ async def hi(ctx):
     await ctx.send('Hello!')
 
 @client.command()
-async def opgg(ctx, region=None, sumName = None):
+async def opgg(ctx, region=None, *sumName = None):
     global summoner
     if(region ==None or sumName == None):
         await ctx.send(f'Invalid input; Enter as follows: "!op.gg [region] [summoner name]" and try again')
@@ -42,9 +42,10 @@ async def opgg(ctx, region=None, sumName = None):
     else:
         try:
             await ctx.send(f'Region: {region.upper()}')
-            await ctx.send(f'Summoner Name: {sumName}')
+            username = " ".join(sumName)
+            await ctx.send(f'Summoner Name: {username}')
             #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
-            summoner = summonerclass.Summoner(sumName, region)
+            summoner = summonerclass.Summoner(username, region)
             await ctx.send(f'Link: {summoner.opgg}')
         except(Exception):
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')

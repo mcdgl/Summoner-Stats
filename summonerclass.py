@@ -12,4 +12,4 @@ class Summoner:
     def __init__(self, name = "", region = ""):
         self.name = name
         self.region = region
-        self.opgg = "https://" + region.lower() + ".op.gg/summoners/" + region.lower() + "/" + name
+        self.opgg = "https://" + region.lower() + ".op.gg/summoners/" + region.lower() + "/" + name.replace(" ", "%2B")
