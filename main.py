@@ -1,11 +1,13 @@
 import discord
 import os
+import summonerclass
 #import botcommands
 from discord.ext import commands
 
 #discord api key stored in env variables for security (this is a public repo)
 my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!")
+summoner = Summoner() #global summoner object
 
 #debug event to see if bot has logged on to discord
 @client.event
@@ -28,14 +30,17 @@ async def hi(ctx):
 
 @client.command()
 async def opgg(ctx, region=None, sumName = None):
+    global summoner
     if(region ==None or sumName == None):
         await ctx.send(f'Invalid input; Enter as follows: "!op.gg [region] [summoner name]" and try again')
     elif(len(region)>3):
         await ctx.send(f'Invalid input; Make sure you are typing the region abbrevation (as follows: NA = North America, KR = Korea, etc)')
     else:
-        await ctx.send(f'Region: {region.upper()}')
-        await ctx.send(f'Summoner Name: {sumName}')
-        search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
-        await ctx.send(f'Link: {search}')
+        try:
+            await ctx.send(f'Region: {region.upper()}')
+            await ctx.send(f'Summoner Name: {sumName}')
+            #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
+            summoner = Summoner(sumName, region)
+            await ctx.send(f'Link: {summoner.opgg}')
 #runs client
 client.run(my_secret)
