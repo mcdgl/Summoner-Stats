@@ -16,9 +16,12 @@ class Summoner:
         #page = requests.get(self.opgg, headers={'User-Agent': 'Mozilla/5.0'}).text
 
         #session = HTMLSession()
+        print('prior to session')
         r = session.get(self.opgg)
+        print('html render')
         r.html.render()
 
+        print('soup')
         soup = BeautifulSoup(r.html.raw_html, "html.parser")
 
         #searches to see if the page has the element saying that a user does not exist
