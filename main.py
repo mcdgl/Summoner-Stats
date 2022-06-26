@@ -10,5 +10,7 @@ cmd_client = commands.Bot(command_prefix = "!")
 async def on_ready():
     print("We have logged in as  {0.user}".format(client))
 
-#@cmd_client.command()
+@cmd_client.command()
+async def hi(ctx):
+    await ctx.send(f'Hello!')
 client.run(my_secret)
