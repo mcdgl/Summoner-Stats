@@ -11,11 +11,10 @@ session = HTMLSession()
 
 class Summoner:
     def __init__(self, name = "", region = ""):
+        #assigning values passed from main, creating opgg string (target link for webscraping)
         self.region = region
         self.opgg = "https://" + region.lower() + ".op.gg/summoners/" + region.lower() + "/" + name.replace(" ", "%2B")
-        #page = requests.get(self.opgg, headers={'User-Agent': 'Mozilla/5.0'}).text
 
-        #session = HTMLSession()
         print('prior to session')
         r = session.get(self.opgg)
         print('html render')
@@ -29,14 +28,16 @@ class Summoner:
         if("This summoner is not" in exists):
             print('Summoner does not exist exception')
             raise Exception("HELP I AM TRAPPED IN A PYTHON SCRIPT")
+        #we are given a username from the user, but they may have misspelled/capitalized wrong so this ensures spelling etc is same as registered by riot
         self.name = soup.find("span", class_="summoner-name").text
 
         #sees if the user is unranked in either rank or flexed
         unranked = soup.findAll("span", class_="unranked")
         print('Searched unranked')
         if unranked:
-            for i in unranked:
-                if ("Solo" in i.parent.text):
+            for i in unranked: #opgg displays ranked elements in order from ranked solo to flex; if length of i = 2, then i[0] = rankedsolo, i[1] = rankedflex
+                if ("Solo" in i.parent.text):#checking parent class which holds "Ranked Solo" or "Ranked Flex"
+                    #Setting default values of Unranked and 0 for the sake of displaying info in embed
                     self.soloRank = "Unranked"
                     self.soloLP = '0 LP'
                     self.soloWR = '0% WR'
@@ -48,13 +49,15 @@ class Summoner:
         #checks if the user is ranked in either ranked or flex
         ranked = soup.findAll("div", class_="tier")
         print('Searched ranked')
+        #finds all elements displaying user LP, stores as list
         lp = soup.findAll('div', class_='lp')
         print('Searched LP')
+        #finds all elements displaying user WinRatio, stores as list
         wr = soup.findAll('div', class_='ratio')
         if ranked:
             for i in range(len(ranked)):
-                if ("Solo" in ranked[i].parent.parent.parent.text):
-                    self.soloRank = ranked[i].text.capitalize()
+                if ("Solo" in ranked[i].parent.parent.parent.text):#same as before
+                    self.soloRank = ranked[i].text.capitalize()#for some reason opgg returns ranks like "master" "challenger" so we just capitalize first letter
                     self.soloLP = lp[i].text
                     self.soloWR = wr[i].text
                 if ("Flex" in ranked[i].parent.parent.parent.text):
