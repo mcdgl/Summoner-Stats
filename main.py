@@ -41,12 +41,14 @@ async def opgg(ctx, region=None, *sumName):
         await ctx.send(f'Invalid input; Make sure you are typing the region abbrevation (as follows: NA = North America, KR = Korea, etc)')
     else:
         try:
-            await ctx.send(f'Region: {region.upper()}')
             username = " ".join(sumName)
             #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
             summoner = summonerclass.Summoner(username, region)
             await ctx.send(f'Summoner Name: {summoner.name}')
+            await ctx.send(f'Region: {region.upper()}')
             await ctx.send(f'Link: {summoner.opgg}')
+            await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP})
+            await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP})
         except(Exception):
             await ctx.send(f'Summoner is either unranked or does not exist in this region.')
 #runs client
