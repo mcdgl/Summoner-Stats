@@ -21,7 +21,7 @@ class Summoner:
         print('prior to session')
         r = asession.get(self.opgg)
         print('html render')
-        await r.html.arender()
+        r.html.arender()
 
         print('soup')
         soup = BeautifulSoup(r.html.raw_html, "html.parser")
