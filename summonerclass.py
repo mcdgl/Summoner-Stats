@@ -1,6 +1,7 @@
 #imports
 import os
 import webbrowser
+import requests
 from selenium import webdriver
 from bs4 import BeautifulSoup #webscraping library
 
