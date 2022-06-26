@@ -60,7 +60,7 @@ class Summoner:
 
         #find profile picture and return
         print('Finding pfp')
-        for i in soup.findAll('img', alt = True):
+        for i in soup.findAll('img', alt = True): #finding all img elements with alt so we can specifically look for "profile image" alt
             if "profile image" in i['alt']:
                 self.pfpLink = i.get('src')
         print(self.pfpLink)
