@@ -6,7 +6,7 @@ from discord.ext import commands
 
 #discord api key stored in env variables for security (this is a public repo)
 my_secret = os.environ['TOKEN']
-client = commands.Bot(command_prefix = "!")
+client = commands.Bot(command_prefix = "!", case_insensitive = True)
 summoner = summonerclass.Summoner() #global summoner object
 regionArray = ["NA", "EUW", "EUNE", "OCE", "KR", "JP", "BR", "LAS", "LAN", "RU", "TR"]
 #debug event to see if bot has logged on to discord
@@ -21,9 +21,9 @@ async def on_message(message):
         return
     #processing commands
     try:
-        await client.process_commands(message.lower())
+        await client.process_commands(message)
     except:
-        await ctx.send("Command not found.")
+        await message.channel.send("Command not found.")
 
 
 #test command
