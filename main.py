@@ -8,7 +8,7 @@ from discord.ext import commands
 my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!")
 summoner = summonerclass.Summoner() #global summoner object
-
+regionArray = ["NA", "EUW", "EUNE", "OCE", "KR", "JP", "BR", "LAS", "LAN", "RU", "TR"]
 #debug event to see if bot has logged on to discord
 @client.event
 async def on_ready():
@@ -33,7 +33,7 @@ async def opgg(ctx, region=None, sumName = None):
     global summoner
     if(region ==None or sumName == None):
         await ctx.send(f'Invalid input; Enter as follows: "!op.gg [region] [summoner name]" and try again')
-    elif(len(region)>3):
+    elif(region.upper() not in regionArray):
         await ctx.send(f'Invalid input; Make sure you are typing the region abbrevation (as follows: NA = North America, KR = Korea, etc)')
     else:
         try:
