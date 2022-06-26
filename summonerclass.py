@@ -13,7 +13,7 @@ class Summoner:
         self.name = name
         self.region = region
         self.opgg = "https://" + region.lower() + ".op.gg/summoners/" + region.lower() + "/" + name.replace(" ", "%2B")
-        page = requests.get(opgg, headers={'User-Agent': 'Mozilla/5.0'}).text
+        page = requests.get(self.opgg, headers={'User-Agent': 'Mozilla/5.0'}).text
         soup = BeautifulSoup(page, "html.parser")
 
         #searches to see if the page has the element saying that a user does not exist
