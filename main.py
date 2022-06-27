@@ -10,12 +10,12 @@ my_secret = os.environ['TOKEN']
 client = commands.Bot(command_prefix = "!", case_insensitive = True)
 #removing default help command to write our own
 client.remove_command('help')
-summoner = ":)" #global summoner object
+summoner = ":)" #global summoner object, is quite happy today
 regionArray = ["NA", "EUW", "EUNE", "OCE", "KR", "JP", "BR", "LAS", "LAN", "RU", "TR"]
 #debug event to see if bot has logged on to discord
 @client.event
 async def on_ready():
-    print("We have logged in as {0.user}".format(client))
+    print("{0.user} signed on!".format(client))
 
 #event handler for messages sent in discord server
 @client.event
@@ -30,10 +30,10 @@ async def on_message(message):
 
 
 #test command
-@client.command()
+"""@client.command()
 async def hi(ctx):
     print('lebron james!')
-    await ctx.send('Hello!')
+    await ctx.send('Hello!')"""
 
 @client.command()
 async def opgg(ctx, region=None, *sumName):
@@ -45,27 +45,21 @@ async def opgg(ctx, region=None, *sumName):
     else:
         try:
             username = " ".join(sumName)
-            #search = (f'https://{region.lower()}.op.gg/summoners/{region.lower()}/{sumName}')
             summoner = summonerclass.Summoner(username, region)
             channel = ctx.message.channel
             #discord embed settings
             embed = discord.Embed(
                 title = 'Summoner Information',
-                description = (f"**Summoner Name**: {summoner.name}\n**Region**: {summoner.region.upper()}\n**Account Level**:{summoner.level}"),
+                description = (f"**Summoner Name**: {summoner.name}\n**Region**: {summoner.region.upper()}\n**Account Level**: {summoner.level}"),
                 color = discord.Color.orange()
             )
-            embed.set_footer(text="Information pulled from the op.gg service.")
+            embed.set_footer(text="Information pulled from the op.gg service. Type !help for command info and more.")
             embed.set_image(url = summoner.pfpLink)
             embed.add_field(name='__Solo Rank__', value = (f'{summoner.soloRank}, {summoner.soloLP}\n{summoner.soloWR}'))
             embed.add_field(name='__Flex Rank__', value = (f'{summoner.flexRank}, {summoner.flexLP}\n{summoner.flexWR}'))
             embed.set_thumbnail(url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/256px-LoL_icon.svg.png')
 
             await ctx.send(embed=embed)
-            #await ctx.send(f'Summoner Name: {summoner.name}')
-            #await ctx.send(f'Region: {region.upper()}')
-            #await ctx.send(f'Link: {summoner.opgg}')
-            #await ctx.send(f'Solo Rank: {summoner.soloRank}, {summoner.soloLP}')
-            #await ctx.send(f'Flex Rank: {summoner.flexRank}, {summoner.flexLP}')
         except Exception as e:
             print(e)
             await ctx.send(e)
